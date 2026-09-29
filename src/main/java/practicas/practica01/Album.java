@@ -14,7 +14,11 @@ public class Album implements Iterable<Cancion> {
 	
 	public Album(String...values) {
 		 //5 líneas
-		 //...
+		 this.titulo = values[0];
+		 this.anyoLanzamiento = values[1];
+		 this.artista = new Artista(values[2]);
+		 this.coverImagenUrl = values[3];
+		 this.canciones = new LinkedList<>();
 	}
 	
 	public Album(String titulo) {
@@ -48,18 +52,29 @@ public class Album implements Iterable<Cancion> {
 	public ArrayList<String> getCanciones() {
 		//Devuelve null si la estructura no está inicializada
 		//1 for()
-		//...
+		ArrayList<String> result = new ArrayList<>();
+		if (result == null) return null;
+		for (Cancion can : canciones) {
+			if (can == null) continue;
+			if (result.contains(can.getTitulo())) continue;
+			result.add(can.getTitulo());
+		}
 		return result;
 	}
 	
 	public void addCanciones(Cancion...canciones) {
 		//1 for()
-		//...
+		for (Cancion can : canciones) {
+			if (can == null) continue;
+			if (this.canciones.contains(can)) continue;
+			this.canciones.add(can);
+		}
 	}
 	
 	public void clear() {
 		//2 líneas
-		//...
+		if (canciones == null) return;
+		this.canciones.clear();
 	}
 	
 	@Override
