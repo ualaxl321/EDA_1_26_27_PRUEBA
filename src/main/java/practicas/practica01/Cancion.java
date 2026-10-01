@@ -57,8 +57,7 @@ public class Cancion {
 		 if (this.artistas == null) return;
 		 //1 for()
 		 for (Artista art : artistas) {
-			if (art == null) continue;
-			if (this.artistas.contains(art)) continue;
+			if (art == null || this.artistas.contains(art)) continue;
 			this.artistas.add(art);
 		}
 	 }
@@ -67,9 +66,7 @@ public class Cancion {
 		 if (this.artistas == null) return null;
 		 ArrayList<String> result = new ArrayList<>();
 		 //1 for()
-		 for (Artista art : artistas) {
-			if (art == null) continue;
-			if (result.contains(art.getNombre())) continue;
+		 for (Artista art : this.artistas) {
 			result.add(art.getNombre());
 		}
 		 return result;
@@ -83,7 +80,7 @@ public class Cancion {
 	 
 	 @Override
 	 public String toString() {
-		 return getTitulo() + " --> " + (this.artistas==null ? "[]" : this.getNombresArtistas().toString());
+		 return this.titulo + " --> " + (this.artistas==null ? "[]" : this.getNombresArtistas());
 	 }
 	 
 	 @Override

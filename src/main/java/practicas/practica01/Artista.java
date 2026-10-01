@@ -53,8 +53,7 @@ public class Artista {
     	//1 for()
     	if (miembros == null || this.miembros == null) return;
     	for (String str : miembros) {
-    		if (str == null || str.isBlank()) continue;
-    		if(this.miembros.contains(str)) continue;
+    		if (str == null || str.isBlank() || this.miembros.contains(str)) continue;
 			this.miembros.add(str);
 		}
     }
