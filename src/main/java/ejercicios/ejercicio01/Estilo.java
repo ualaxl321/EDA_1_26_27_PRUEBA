@@ -61,42 +61,198 @@ public class Estilo {
 //	}
 	
 	
-	//EJERCICIO 3
-	//Quiero valores positivos o negativos con probabilidad del 50%
-	//Mejora de If else
-	// USANDO 3 FORMAS DE RECORRER ESTRUCTURA
-	public static void main (String[] args) {
+//	//EJERCICIO 3
+//	//Quiero valores positivos o negativos con probabilidad del 50%
+//	//Mejora de If else
+//	// USANDO 3 FORMAS DE RECORRER ESTRUCTURA
+//	public static void main (String[] args) {
+//		ArrayList<String> arr = new ArrayList<String>();
+//		
+//		for (int i = 0; i < 50; i++) {
+//			arr.add(String.valueOf(Math.random() < 0.5 ? i : -i));
+//		}
+//		
+//		//Ahora que está la estructura, hay que recorrerla para contar número de negativos
+//		int numNegativos = 0;
+//		
+////		//Forma 1: FOR
+////		for (int i = 0; i < arr.size(); i++) {
+//////			if(arr.get(i) < 0) numNegativos++; //Se queja, get de i da un string, se convierte con Integer
+////			if(Integer.valueOf(arr.get(i)) < 0) numNegativos++;
+////		}
+//		
+////		//Forma 2: ITERATOR
+////		Iterator<String> it = arr.iterator();
+////		while (it.hasNext()) {
+////			if(Integer.valueOf(it.next()) < 0) numNegativos++;
+////			
+////		}
+//		
+//		//Forma 3: FOREACH
+//		for (String str : arr) {
+//			if ((Integer.valueOf(str)) < 0) numNegativos++;
+//		}
+//		System.out.println("El número de elementos negativos es: " + numNegativos);
+//		System.out.println(arr.toString());
+//		
+//	}
+	
+//	//EJERCICIO 4
+//	//Quiero valores positivos o negativos con probabilidad del 50%
+//	//Si encuentro negativo, lo transformo a positivo
+//	public static void main (String[] args) {
+//		ArrayList<String> arr = new ArrayList<String>();
+//		
+//		for (int i = 0; i < 50; i++) {
+//			arr.add(String.valueOf(Math.random() < 0.5 ? i : -i));
+//		}
+//		
+//		System.out.println("Contenido antes de modificar:" + arr.toString());
+//		
+////		for (String str : arr) {
+////			if ((Integer.valueOf(str)) < 0) str =- str; //Se queja, hay que convertir
+////		}
+//		
+////		for (String str : arr) {
+////			// Esto casi, pero no va porque esta forma de iteración es inmutable
+////			// El valor que asigno a la referencia de cada elemento, no modifica el valor del dato
+////			if ((Integer.valueOf(str)) < 0) str = String.valueOf(-Integer.valueOf(str)); 
+////		}
+//		
+//		//SOLUCIÓN: Uso del set = uso de índice = for normal
+//		for (int i = 0; i < arr.size(); i++) {
+//			if ((Integer.valueOf(arr.get(i))) < 0) arr.set(i, String.valueOf(-Integer.valueOf(arr.get(i))));
+//		}
+//		
+//		System.out.println("Contenido despues de modificar:" + arr.toString());
+//		
+//	}
+	
+//	//EJERCICIO 5
+//	// Recorro estructura y si encuentro valor negativo,
+//	// informo y termino
+//	public static void main (String[] args) {
+//		ArrayList<String> arr = new ArrayList<String>();
+//		
+//		for (int i = 0; i < 50; i++) {
+//			arr.add(String.valueOf(Math.random() < 0.9 ? i : -i));
+//		}
+//		System.out.println("Contenido original:" + arr.toString());
+//		
+////		//Cuidado, esto no para hasta recorrer toda la estructura
+////		for (String valorstr : arr) {
+////			if (Integer.valueOf(valorstr) < 0) {
+////				System.out.println("He encontrado primer valor negativo");
+////			} else {
+////				System.out.println("Valor positivo hallado");
+////			}
+////		}
+//		
+////		for (String valorstr : arr) {
+////			//Le damos la vuelta, si no cumple, ignoro
+////			if (Integer.valueOf(valorstr) >= 0) {
+////				System.out.println("Valor positivo hallado");
+////				continue; 
+////			} 
+////			System.out.println("He encontrado primer valor negativo: " + valorstr);
+////			break;
+////		}
+//		
+////		for (String valorstr : arr) {
+////			//Más sencillo
+////			if (Integer.valueOf(valorstr) >= 0) continue; 
+////			System.out.println("He encontrado primer valor negativo: " + valorstr);
+////			break;
+////		}
+//		
+////		// Ahora con while(true)
+////		int i = 0;
+////		
+////		while(true) {
+////			if (Integer.valueOf(arr.get(i)) < 0) {
+////				System.out.println("He encontrado primer valor negativo: " + arr.get(i));
+////				break;
+////			}
+////			i++; //Se incrementa hasta el límite y peta si solo hay positivos.
+////		}
+//		
+////		// MEJORA: while(true)
+////		int i = 0;
+////		
+////		while(true) {
+////			if (i == arr.size()) {
+////				System.out.println("No se ha encontrado valor negativo");
+////				break;
+////			}
+////			if (Integer.valueOf(arr.get(i)) < 0) {
+////				System.out.println("He encontrado primer valor negativo: " + arr.get(i));
+////				break;
+////			}
+////			i++; 
+////		}
+//		
+////		// MEJORA: while(true)
+////		// Haciendo uso de continue a la fuerza
+////		int i = 0;
+////		
+////		while(true) {
+////			if (i == arr.size()) {
+////				System.out.println("No se ha encontrado valor negativo");
+////				break;
+////			}
+////			if (Integer.valueOf(arr.get(i)) >= 0) continue;
+////			
+////			//Problema, nunca se incrementa la i
+////			System.out.println("He encontrado primer valor negativo: " + arr.get(i));
+////			i++; 
+////			break;
+////		}
+//		
+//		// MEJORA PRO: while(true)
+//		// Haciendo uso de continue a la fuerza
+//		int i = 0;
+//		
+//		while(true) {
+//			if (i == arr.size()) {
+//				System.out.println("No se ha encontrado valor negativo");
+//				break;
+//			}
+//			if (Integer.valueOf(arr.get(i)) >= 0) {
+//				i++;
+//				continue;
+//			}
+//			
+//			System.out.println("He encontrado primer valor negativo: " + arr.get(i));
+//			break;
+//		}
+//		System.out.println("He terminado");
+//	}
+	
+	
+	//EJERCICIO 6
+	// MI SOLUCIÓN 
+	// NO se hace uso de variables bandera (Boolean)
+	public static void main(String[] args) {
 		ArrayList<String> arr = new ArrayList<String>();
 		
-		for (int i = 0; i < 50; i++) {
-			arr.add(String.valueOf(Math.random() < 0.5 ? i : -i));
+		for (int i =0; i<50; i++) {
+			arr.add(String.valueOf(Math.random() < 0.9 ? i : -i));
 		}
+
+		System.out.println("Contenido original: " + arr.toString());
 		
-		//Ahora que está la estructura, hay que recorrerla para contar número de negativos
-		int numNegativos = 0;
+		int i;
 		
-//		//Forma 1: FOR
-//		for (int i = 0; i < arr.size(); i++) {
-////			if(arr.get(i) < 0) numNegativos++; //Se queja, get de i da un string, se convierte con Integer
-//			if(Integer.valueOf(arr.get(i)) < 0) numNegativos++;
-//		}
+		// Hago un for que continue la iterando si i es menor que el tamaño del array
+		// y el valor de esa posión i comprueba que sea >= 0.
+		// ¿Qué ocurrirá si es negativo? Sale del for y el valor de ese i sale por pantalla
+        for (i = 0; i < arr.size() && Integer.parseInt(arr.get(i)) >= 0; i++) {
+        	 continue;
+        }
+        
+        System.out.println(i == arr.size() ? "No he encontrado ningún valor negativo" : "He encontrado el primer valor negativo: " + arr.get(i));
 		
-//		//Forma 2: ITERATOR
-//		Iterator<String> it = arr.iterator();
-//		while (it.hasNext()) {
-//			if(Integer.valueOf(it.next()) < 0) numNegativos++;
-//			
-//		}
-		
-		//Forma 3: FOREACH
-		Iterator<String> it = arr.iterator();
-		for (String str : arr) {
-			if ((Integer.valueOf(str)) < 0) numNegativos++;
-		}
-		System.out.println("El número de elementos negativos es: " + numNegativos);
-		System.out.println(arr.toString());
-		
-		
-		//MIN 23 DE VIDEO
+		System.out.println("Terminé");
 	}
+
 }
